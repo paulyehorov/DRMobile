@@ -101,11 +101,30 @@
                         <outlet property="textUserEmail" destination="Fum-XM-Hz2" id="Tkk-B0-5Ry"/>
                         <outlet property="textUserPassword" destination="8lQ-8w-xDb" id="hN2-TY-RAo"/>
                         <outlet property="textUserToken" destination="qeQ-rD-Mmr" id="SMA-qi-TCP"/>
+                        <segue destination="n0h-AO-U5K" kind="presentation" identifier="moveToProjectsList" id="0uA-AU-oON"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GmD-Rr-ZGN" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="596" y="-243.32833583208398"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="z2M-lD-gH5">
+            <objects>
+                <viewController id="n0h-AO-U5K" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zqY-IB-lQW"/>
+                        <viewControllerLayoutGuide type="bottom" id="RLr-vO-qXf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XQH-m0-63o">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CXE-bz-pcQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1289" y="-242"/>
         </scene>
     </scenes>
 </document>

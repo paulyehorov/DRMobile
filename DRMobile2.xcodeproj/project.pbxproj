@@ -16,6 +16,7 @@
 		66E1C0071DD4A1A000D15F59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E1C0051DD4A1A000D15F59 /* LaunchScreen.storyboard */; };
 		66E1C0121DD4A1A000D15F59 /* DRMobile2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1C0111DD4A1A000D15F59 /* DRMobile2Tests.swift */; };
 		66E1C01D1DD4A1A000D15F59 /* DRMobile2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1C01C1DD4A1A000D15F59 /* DRMobile2UITests.swift */; };
+		66E1C02B1DD4DA8000D15F59 /* DataRobotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1C02A1DD4DA8000D15F59 /* DataRobotService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		66E1C0181DD4A1A000D15F59 /* DRMobile2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DRMobile2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E1C01C1DD4A1A000D15F59 /* DRMobile2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRMobile2UITests.swift; sourceTree = "<group>"; };
 		66E1C01E1DD4A1A000D15F59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66E1C02A1DD4DA8000D15F59 /* DataRobotService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRobotService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				66E1BFF81DD4A1A000D15F59 /* AppDelegate.swift */,
 				66E1BFFA1DD4A1A000D15F59 /* RootViewController.swift */,
 				66E1BFFC1DD4A1A000D15F59 /* DataViewController.swift */,
+				66E1C02A1DD4DA8000D15F59 /* DataRobotService.swift */,
 				66E1BFFE1DD4A1A000D15F59 /* ModelController.swift */,
 				66E1C0001DD4A1A000D15F59 /* Main.storyboard */,
 				66E1C0031DD4A1A000D15F59 /* Assets.xcassets */,
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66E1C02B1DD4DA8000D15F59 /* DataRobotService.swift in Sources */,
 				66E1BFFB1DD4A1A000D15F59 /* RootViewController.swift in Sources */,
 				66E1BFFF1DD4A1A000D15F59 /* ModelController.swift in Sources */,
 				66E1BFFD1DD4A1A000D15F59 /* DataViewController.swift in Sources */,
@@ -511,6 +515,7 @@
 				66E1C0231DD4A1A000D15F59 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		66E1C0241DD4A1A000D15F59 /* Build configuration list for PBXNativeTarget "DRMobile2Tests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +524,7 @@
 				66E1C0261DD4A1A000D15F59 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		66E1C0271DD4A1A000D15F59 /* Build configuration list for PBXNativeTarget "DRMobile2UITests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +533,7 @@
 				66E1C0291DD4A1A000D15F59 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

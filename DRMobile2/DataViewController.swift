@@ -22,14 +22,18 @@ class DataViewController: UIViewController {
         // create the request
         drService.login(username: String!(textUserEmail.text!), password: String!(textUserPassword.text!)) { isSuccess in
             if (isSuccess) {
-                try! self.drService.getProjects { result in
-                    for project in result {
-                        let projectName = project["projectName"] as! String
-                        print(projectName)
-                        DispatchQueue.main.async(execute: {
-                            self.textUserToken.text = "\(projectName)"
-                        })
-                    }
+//                try! self.drService.getProjects { result in
+//                    for project in result {
+//                        let projectName = project["projectName"] as! String
+//                        print(projectName)
+//                        DispatchQueue.main.async(execute: {
+//                            self.textUserToken.text = "\(projectName)"
+//                        })
+//                    }
+//                }
+                print("LOGIN SUCCEED")
+                OperationQueue.main.addOperation {
+                    self.performSegue(withIdentifier: "moveToProjectsList", sender: self)
                 }
             } else {
                 print("LOGIN FAILED")
