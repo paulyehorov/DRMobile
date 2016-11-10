@@ -13,7 +13,7 @@ class DataViewController: UIViewController {
     @IBOutlet weak var dataLabel: UILabel!
     var dataObject: String = ""
 
-    let drService = DataRobotService()
+    let drService = DataRobotService.sharedInstance
 
     @IBOutlet weak var textUserEmail: UITextField!
     @IBOutlet weak var textUserPassword: UITextField!

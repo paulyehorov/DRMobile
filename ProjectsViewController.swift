@@ -8,19 +8,46 @@
 
 import UIKit
 
-class ProjectsViewController: UIViewController {
+class ProjectsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let drService = DataRobotService()
+    let drService = DataRobotService.sharedInstance
 
     @IBOutlet weak var tableProjectsList: UITableView!
     @IBOutlet weak var textDebugLabel: UILabel!
     
+    var projectsList: [String] = []
+    
+    func tableView(_ tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+        return self.projectsList.count;
+    }
+    
+    func tableView(_ tableViewt: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        let cell = tableProjectsList.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = projectsList[indexPath.row]
+        
+        return cell
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.tableProjectsList.delegate = self
+        self.tableProjectsList.dataSource = self
         // Do any additional setup after loading the view.
+        
+        try! drService.getProjects { result in
+            for project in result {
+                let projectName = project["projectName"] as! String
+                self.projectsList.append(projectName)
+                
+            }
+            print(self.projectsList)
+            
+            self.tableProjectsList.reloadData()
+        }
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
