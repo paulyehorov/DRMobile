@@ -15,7 +15,7 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableProjectsList: UITableView!
     @IBOutlet weak var textDebugLabel: UILabel!
     
-    var projectsList: [String] = []
+    var projectsList: [String:String] = [:]
     
     func tableView(_ tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         return self.projectsList.count;
@@ -23,7 +23,9 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableViewt: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "DRCell")
-        cell.textLabel?.text = self.projectsList[indexPath.row]
+        let key = Array(self.projectsList.keys)[indexPath.row]
+        cell.textLabel?.text = self.projectsList[key]
+        cell.detailTextLabel?.text = key
         
         return cell
     }
@@ -39,8 +41,7 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
             for project in result {
                 let projectName = project["projectName"] as! String
                 let projectId = project["id"] as! String
-                self.projectsList.append("\(projectName): \(projectId)")
-                
+                self.projectsList[projectId] = projectName
             }
             print(self.projectsList)
             
