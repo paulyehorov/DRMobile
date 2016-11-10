@@ -8,19 +8,27 @@
 
 import Foundation
 
+enum DataRobotServiceError: Error {
+    case missingToken
+}
+
 class DataRobotService {
     
     private let baseUrl = "https://app.datarobot.com/api/v2/"
     private var apiToken = ""
+    private var apiTokenTask: URLSessionDataTask? = nil
     
-    private func sendRequest(requestJson: Any, route: String, method: String, callback: @escaping ([String:Any]) -> Swift.Void) {
+    private func sendRequest(requestJson: Any?, headers: [String:String], route: String, method: String, callback: @escaping (Any) -> Swift.Void) -> URLSessionDataTask {
         let url = "\(self.baseUrl)\(route)/"
         let request = NSMutableURLRequest(url: NSURL(string: url) as! URL, cachePolicy: NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData, timeoutInterval: 5)
         
-        let jsonData = try! JSONSerialization.data(withJSONObject: requestJson, options: .prettyPrinted)
         request.httpMethod = method
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        for (key, val) in headers {
+            request.setValue(val, forHTTPHeaderField: key)
+        }
         if (method == "POST") {
+            let jsonData = try! JSONSerialization.data(withJSONObject: requestJson, options: .prettyPrinted)
             request.httpBody = jsonData
         }
         
@@ -31,7 +39,7 @@ class DataRobotService {
             }
             
             do {
-                let result = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:Any]
+                let result = try JSONSerialization.jsonObject(with: data!, options: [])
                 callback(result)
             } catch {
                 print("Error -> \(error)")
@@ -39,16 +47,47 @@ class DataRobotService {
             }
         }
         task.resume()
+        return task
     }
     
-    func login(username: String, password: String) {
-        let request = ["username": username, "password": password]
-        self.sendRequest(requestJson: request, route: "api_token", method: "POST") { result in
-            self.apiToken = result["apiToken"] as! String
+    private func checkToken() throws {
+        if (self.apiTokenTask?.state != URLSessionTask.State.completed) {
+            throw DataRobotServiceError.missingToken
         }
     }
     
-    func getProjects(callback: @escaping ([String:Any]) -> Swift.Void) {
-        
+    private func sendRequestWithToken(requestJson: Any?, route: String, method: String, callback: @escaping (Any) -> Swift.Void) throws -> URLSessionDataTask {
+        try checkToken()
+        let headers = [
+            "Authorization": "Token \(self.apiToken)"
+        ]
+        return sendRequest(requestJson: requestJson, headers: headers, route: route, method: method, callback: callback)
+    }
+    
+    func waitForToken(timeout: UInt32, retries: Int) {
+        for _ in 1...retries {
+            do {
+                try checkToken()
+                return
+            } catch {
+                sleep(timeout)
+            }
+        }
+    }
+    
+    func login(username: String, password: String, callback: @escaping () -> Swift.Void) {
+        let request = ["username": username, "password": password]
+        self.apiTokenTask = self.sendRequest(requestJson: request, headers: [:], route: "api_token", method: "POST") { result in
+            let dict = result as! [String:Any]
+            self.apiToken = dict["apiToken"] as! String
+            callback()
+        }
+    }
+    
+    func getProjects(callback: @escaping ([[String:Any]]) -> Swift.Void) throws {
+        try self.sendRequestWithToken(requestJson: nil, route: "projects", method: "GET") { result in
+            let projects = result as! [[String:Any]]
+            callback(projects)
+        }
     }
 }

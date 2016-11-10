@@ -20,7 +20,15 @@ class DataViewController: UIViewController {
     @IBOutlet weak var textUserToken: UILabel!
     @IBAction func generateUserToken(_ sender: Any) {
         // create the request
-        drService.login(username: String!(textUserEmail.text!), password: String!(textUserPassword.text!))
+        drService.login(username: String!(textUserEmail.text!), password: String!(textUserPassword.text!)) {
+            try! self.drService.getProjects { result in
+                for project in result {
+                    let projectName = project["projectName"] as! String
+                    print(projectName)
+                    self.textUserToken.text = "\(projectName)"
+                }
+            }
+        }
     }
     
     override func viewDidLoad() {
