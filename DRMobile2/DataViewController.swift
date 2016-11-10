@@ -19,12 +19,12 @@ class DataViewController: UIViewController {
     @IBOutlet weak var textUserToken: UILabel!
     @IBAction func generateUserToken(_ sender: Any) {
         // create the request
-        let request = NSMutableURLRequest(url: NSURL(string: "https://app.datarobot.com/api/v2/api_token") as! URL, cachePolicy: NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData, timeoutInterval: 5)
+        let request = NSMutableURLRequest(url: NSURL(string: "https://app.datarobot.com/api/v2/api_token/") as! URL, cachePolicy: NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData, timeoutInterval: 5)
         
         // create some JSON data and configure the request
-        let json = ["username": textUserEmail.text!, "password": textUserPassword.text!]
-        self.textUserToken.text = "\(json))"
-        let jsonData = try! JSONSerialization.data(withJSONObject: json)
+        let json = ["username": String!(textUserEmail.text!), "password": String!(textUserPassword.text!)]
+        let jsonData = try! JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+        self.textUserToken.text = "\(json)"
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = jsonData
@@ -38,8 +38,8 @@ class DataViewController: UIViewController {
             do {
                 let result = try JSONSerialization.jsonObject(with: data!, options: []) as? [String:Any]
                 
-                print("Result -> \(result)")
-                self.textUserToken.text! = "\(result)"
+                print("Result -> \(result!)")
+                self.textUserToken.text = "\(result!)"
                 
             } catch {
                 print("Error -> \(error)")

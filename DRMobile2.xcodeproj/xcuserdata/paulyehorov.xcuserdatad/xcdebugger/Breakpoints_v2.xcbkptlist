@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DRMobile2/DataViewController.swift"
-            timestampString = "500476594.9179"
+            timestampString = "500481082.141042"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "generateUserToken(_:)"
             landmarkType = "7">
          </BreakpointContent>
