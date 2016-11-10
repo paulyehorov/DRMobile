@@ -18,6 +18,8 @@ class DataRobotService {
     private var apiToken = ""
     private var apiTokenTask: URLSessionDataTask? = nil
     
+    static let sharedInstance = DataRobotService()
+    
     private func sendRequest(requestJson: Any?, headers: [String:String], route: String, method: String, callback: @escaping (Any) -> Swift.Void) -> URLSessionDataTask {
         let url = "\(self.baseUrl)\(route)/"
         let request = NSMutableURLRequest(url: NSURL(string: url) as! URL, cachePolicy: NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData, timeoutInterval: 5)
@@ -39,8 +41,12 @@ class DataRobotService {
             }
             
             do {
-                let result = try JSONSerialization.jsonObject(with: data!, options: [])
-                callback(result)
+                if (data != nil && !(data?.isEmpty)!) {
+                    let result = try JSONSerialization.jsonObject(with: data!, options: [])
+                    callback(result)
+                } else {
+                    callback(["result": "success"])
+                }
             } catch {
                 print("Error -> \(error)")
                 return
@@ -140,5 +146,21 @@ class DataRobotService {
     
     func getModelJob(projectId: String, jobId: String, callback: @escaping ([String:Any]) -> Swift.Void) throws {
         try getObject(route: "projects/\(projectId)/modelJobs/\(jobId)", callback: callback)
+    }
+    
+    func startAutopilot(projectId: String, featureListId: String, callback: @escaping () -> Swift.Void) throws {
+        let request = ["featurelistId": featureListId, "mode": "auto"]
+        try sendRequestWithToken(requestJson: request, route: "projects/\(projectId)/autopilots", method: "POST") { result in
+            print(result)
+            callback()
+        }
+    }
+    
+    func setTarget(projectId: String, target: String, callback: @escaping () -> Swift.Void) throws {
+        let request = ["target": target]
+        try sendRequestWithToken(requestJson: request, route: "projects/\(projectId)/aim", method: "PATCH") { result in
+            print(result)
+            callback()
+        }
     }
 }
