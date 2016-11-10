@@ -148,6 +148,10 @@ class DataRobotService {
         try getObject(route: "projects/\(projectId)/modelJobs/\(jobId)", callback: callback)
     }
     
+    func getJobs(projectId: String, callback: @escaping ([String:Any]) -> Swift.Void) throws {
+        try getObject(route: "projects/\(projectId)/jobs", callback: callback)
+    }
+    
     func startAutopilot(projectId: String, featureListId: String, callback: @escaping () -> Swift.Void) throws {
         let request = ["featurelistId": featureListId, "mode": "auto"]
         try sendRequestWithToken(requestJson: request, route: "projects/\(projectId)/autopilots", method: "POST") { result in
