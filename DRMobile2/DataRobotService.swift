@@ -94,4 +94,39 @@ class DataRobotService {
             callback(projects)
         }
     }
+    
+    func getProject(projectId: String, callback: @escaping ([String:Any]) -> Swift.Void) throws {
+        try self.sendRequestWithToken(requestJson: nil, route: "projects/\(projectId)", method: "GET") { result in
+            let projects = result as! [String:Any]
+            callback(projects)
+        }
+    }
+    
+    func getFeatures(projectId: String, callback: @escaping ([[String:Any]]) -> Swift.Void) throws {
+        try self.sendRequestWithToken(requestJson: nil, route: "projects/\(projectId)/features", method: "GET") { result in
+            let features = result as! [[String:Any]]
+            callback(features)
+        }
+    }
+    
+    func getFeature(projectId: String, featureName: String, callback: @escaping ([String:Any]) -> Swift.Void) throws {
+        try self.sendRequestWithToken(requestJson: nil, route: "projects/\(projectId)/features/\(featureName)", method: "GET") { result in
+            let features = result as! [String:Any]
+            callback(features)
+        }
+    }
+    
+    func getFeatureLists(projectId: String, callback: @escaping ([[String:Any]]) -> Swift.Void) throws {
+        try self.sendRequestWithToken(requestJson: nil, route: "projects/\(projectId)/featurelists", method: "GET") { result in
+            let features = result as! [[String:Any]]
+            callback(features)
+        }
+    }
+    
+    func getFeatureList(projectId: String, featureListId: String, callback: @escaping ([String:Any]) -> Swift.Void) throws {
+        try self.sendRequestWithToken(requestJson: nil, route: "projects/\(projectId)/featurelists/\(featureListId)", method: "GET") { result in
+            let features = result as! [String:Any]
+            callback(features)
+        }
+    }
 }
