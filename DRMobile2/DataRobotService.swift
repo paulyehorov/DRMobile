@@ -133,4 +133,12 @@ class DataRobotService {
     func getModel(projectId: String, modelId: String, callback: @escaping ([String:Any]) -> Swift.Void) throws {
         try getObject(route: "projects/\(projectId)/models/\(modelId)", callback: callback)
     }
+    
+    func getModelJobs(projectId: String, callback: @escaping ([[String:Any]]) -> Swift.Void) throws {
+        try getObjects(route: "projects/\(projectId)/modelJobs", callback: callback)
+    }
+    
+    func getModelJob(projectId: String, jobId: String, callback: @escaping ([String:Any]) -> Swift.Void) throws {
+        try getObject(route: "projects/\(projectId)/modelJobs/\(jobId)", callback: callback)
+    }
 }
