@@ -75,12 +75,16 @@ class DataRobotService {
         }
     }
     
-    func login(username: String, password: String, callback: @escaping () -> Swift.Void) {
+    func login(username: String, password: String, callback: @escaping (Bool) -> Swift.Void) {
         let request = ["username": username, "password": password]
         self.apiTokenTask = self.sendRequest(requestJson: request, headers: [:], route: "api_token", method: "POST") { result in
             let dict = result as! [String:Any]
-            self.apiToken = dict["apiToken"] as! String
-            callback()
+            if dict["apiToken"] != nil {
+                self.apiToken = dict["apiToken"] as! String
+                callback(true)
+            } else {
+                callback(false)
+            }
         }
     }
     
