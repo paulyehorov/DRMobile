@@ -25,7 +25,9 @@ class DataViewController: UIViewController {
                 for project in result {
                     let projectName = project["projectName"] as! String
                     print(projectName)
-                    self.textUserToken.text = "\(projectName)"
+                    DispatchQueue.main.async(execute: {
+                        self.textUserToken.text = "\(projectName)"
+                    })
                 }
             }
         }
