@@ -21,9 +21,9 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
         return self.projectsList.count;
     }
     
-    func tableView(_ tableViewt: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tableProjectsList.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = projectsList[indexPath.row]
+    func tableView(_ tableViewt: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "DRCell")
+        cell.textLabel?.text = self.projectsList[indexPath.row]
         
         return cell
     }
@@ -43,7 +43,9 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
             }
             print(self.projectsList)
             
-            self.tableProjectsList.reloadData()
+            DispatchQueue.main.async(execute: {
+                self.tableProjectsList.reloadData()
+            })
         }
         
     }
