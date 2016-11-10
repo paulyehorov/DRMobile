@@ -1,0 +1,534 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		66E1BFF91DD4A1A000D15F59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1BFF81DD4A1A000D15F59 /* AppDelegate.swift */; };
+		66E1BFFB1DD4A1A000D15F59 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1BFFA1DD4A1A000D15F59 /* RootViewController.swift */; };
+		66E1BFFD1DD4A1A000D15F59 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1BFFC1DD4A1A000D15F59 /* DataViewController.swift */; };
+		66E1BFFF1DD4A1A000D15F59 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1BFFE1DD4A1A000D15F59 /* ModelController.swift */; };
+		66E1C0021DD4A1A000D15F59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E1C0001DD4A1A000D15F59 /* Main.storyboard */; };
+		66E1C0041DD4A1A000D15F59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E1C0031DD4A1A000D15F59 /* Assets.xcassets */; };
+		66E1C0071DD4A1A000D15F59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E1C0051DD4A1A000D15F59 /* LaunchScreen.storyboard */; };
+		66E1C0121DD4A1A000D15F59 /* DRMobile2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1C0111DD4A1A000D15F59 /* DRMobile2Tests.swift */; };
+		66E1C01D1DD4A1A000D15F59 /* DRMobile2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1C01C1DD4A1A000D15F59 /* DRMobile2UITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		66E1C00E1DD4A1A000D15F59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66E1BFED1DD4A1A000D15F59 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 66E1BFF41DD4A1A000D15F59;
+			remoteInfo = DRMobile2;
+		};
+		66E1C0191DD4A1A000D15F59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66E1BFED1DD4A1A000D15F59 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 66E1BFF41DD4A1A000D15F59;
+			remoteInfo = DRMobile2;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		66E1BFF51DD4A1A000D15F59 /* DRMobile2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DRMobile2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		66E1BFF81DD4A1A000D15F59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		66E1BFFA1DD4A1A000D15F59 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		66E1BFFC1DD4A1A000D15F59 /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
+		66E1BFFE1DD4A1A000D15F59 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
+		66E1C0011DD4A1A000D15F59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		66E1C0031DD4A1A000D15F59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		66E1C0061DD4A1A000D15F59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		66E1C0081DD4A1A000D15F59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66E1C00D1DD4A1A000D15F59 /* DRMobile2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DRMobile2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		66E1C0111DD4A1A000D15F59 /* DRMobile2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRMobile2Tests.swift; sourceTree = "<group>"; };
+		66E1C0131DD4A1A000D15F59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66E1C0181DD4A1A000D15F59 /* DRMobile2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DRMobile2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		66E1C01C1DD4A1A000D15F59 /* DRMobile2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRMobile2UITests.swift; sourceTree = "<group>"; };
+		66E1C01E1DD4A1A000D15F59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		66E1BFF21DD4A1A000D15F59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66E1C00A1DD4A1A000D15F59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66E1C0151DD4A1A000D15F59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		66E1BFEC1DD4A1A000D15F59 = {
+			isa = PBXGroup;
+			children = (
+				66E1BFF71DD4A1A000D15F59 /* DRMobile2 */,
+				66E1C0101DD4A1A000D15F59 /* DRMobile2Tests */,
+				66E1C01B1DD4A1A000D15F59 /* DRMobile2UITests */,
+				66E1BFF61DD4A1A000D15F59 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		66E1BFF61DD4A1A000D15F59 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				66E1BFF51DD4A1A000D15F59 /* DRMobile2.app */,
+				66E1C00D1DD4A1A000D15F59 /* DRMobile2Tests.xctest */,
+				66E1C0181DD4A1A000D15F59 /* DRMobile2UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		66E1BFF71DD4A1A000D15F59 /* DRMobile2 */ = {
+			isa = PBXGroup;
+			children = (
+				66E1BFF81DD4A1A000D15F59 /* AppDelegate.swift */,
+				66E1BFFA1DD4A1A000D15F59 /* RootViewController.swift */,
+				66E1BFFC1DD4A1A000D15F59 /* DataViewController.swift */,
+				66E1BFFE1DD4A1A000D15F59 /* ModelController.swift */,
+				66E1C0001DD4A1A000D15F59 /* Main.storyboard */,
+				66E1C0031DD4A1A000D15F59 /* Assets.xcassets */,
+				66E1C0051DD4A1A000D15F59 /* LaunchScreen.storyboard */,
+				66E1C0081DD4A1A000D15F59 /* Info.plist */,
+			);
+			path = DRMobile2;
+			sourceTree = "<group>";
+		};
+		66E1C0101DD4A1A000D15F59 /* DRMobile2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				66E1C0111DD4A1A000D15F59 /* DRMobile2Tests.swift */,
+				66E1C0131DD4A1A000D15F59 /* Info.plist */,
+			);
+			path = DRMobile2Tests;
+			sourceTree = "<group>";
+		};
+		66E1C01B1DD4A1A000D15F59 /* DRMobile2UITests */ = {
+			isa = PBXGroup;
+			children = (
+				66E1C01C1DD4A1A000D15F59 /* DRMobile2UITests.swift */,
+				66E1C01E1DD4A1A000D15F59 /* Info.plist */,
+			);
+			path = DRMobile2UITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		66E1BFF41DD4A1A000D15F59 /* DRMobile2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66E1C0211DD4A1A000D15F59 /* Build configuration list for PBXNativeTarget "DRMobile2" */;
+			buildPhases = (
+				66E1BFF11DD4A1A000D15F59 /* Sources */,
+				66E1BFF21DD4A1A000D15F59 /* Frameworks */,
+				66E1BFF31DD4A1A000D15F59 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DRMobile2;
+			productName = DRMobile2;
+			productReference = 66E1BFF51DD4A1A000D15F59 /* DRMobile2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		66E1C00C1DD4A1A000D15F59 /* DRMobile2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66E1C0241DD4A1A000D15F59 /* Build configuration list for PBXNativeTarget "DRMobile2Tests" */;
+			buildPhases = (
+				66E1C0091DD4A1A000D15F59 /* Sources */,
+				66E1C00A1DD4A1A000D15F59 /* Frameworks */,
+				66E1C00B1DD4A1A000D15F59 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				66E1C00F1DD4A1A000D15F59 /* PBXTargetDependency */,
+			);
+			name = DRMobile2Tests;
+			productName = DRMobile2Tests;
+			productReference = 66E1C00D1DD4A1A000D15F59 /* DRMobile2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		66E1C0171DD4A1A000D15F59 /* DRMobile2UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66E1C0271DD4A1A000D15F59 /* Build configuration list for PBXNativeTarget "DRMobile2UITests" */;
+			buildPhases = (
+				66E1C0141DD4A1A000D15F59 /* Sources */,
+				66E1C0151DD4A1A000D15F59 /* Frameworks */,
+				66E1C0161DD4A1A000D15F59 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				66E1C01A1DD4A1A000D15F59 /* PBXTargetDependency */,
+			);
+			name = DRMobile2UITests;
+			productName = DRMobile2UITests;
+			productReference = 66E1C0181DD4A1A000D15F59 /* DRMobile2UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		66E1BFED1DD4A1A000D15F59 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "Paul Yehorov";
+				TargetAttributes = {
+					66E1BFF41DD4A1A000D15F59 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
+					66E1C00C1DD4A1A000D15F59 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 66E1BFF41DD4A1A000D15F59;
+					};
+					66E1C0171DD4A1A000D15F59 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 66E1BFF41DD4A1A000D15F59;
+					};
+				};
+			};
+			buildConfigurationList = 66E1BFF01DD4A1A000D15F59 /* Build configuration list for PBXProject "DRMobile2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 66E1BFEC1DD4A1A000D15F59;
+			productRefGroup = 66E1BFF61DD4A1A000D15F59 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				66E1BFF41DD4A1A000D15F59 /* DRMobile2 */,
+				66E1C00C1DD4A1A000D15F59 /* DRMobile2Tests */,
+				66E1C0171DD4A1A000D15F59 /* DRMobile2UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		66E1BFF31DD4A1A000D15F59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66E1C0071DD4A1A000D15F59 /* LaunchScreen.storyboard in Resources */,
+				66E1C0041DD4A1A000D15F59 /* Assets.xcassets in Resources */,
+				66E1C0021DD4A1A000D15F59 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66E1C00B1DD4A1A000D15F59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66E1C0161DD4A1A000D15F59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		66E1BFF11DD4A1A000D15F59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66E1BFFB1DD4A1A000D15F59 /* RootViewController.swift in Sources */,
+				66E1BFFF1DD4A1A000D15F59 /* ModelController.swift in Sources */,
+				66E1BFFD1DD4A1A000D15F59 /* DataViewController.swift in Sources */,
+				66E1BFF91DD4A1A000D15F59 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66E1C0091DD4A1A000D15F59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66E1C0121DD4A1A000D15F59 /* DRMobile2Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66E1C0141DD4A1A000D15F59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66E1C01D1DD4A1A000D15F59 /* DRMobile2UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		66E1C00F1DD4A1A000D15F59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 66E1BFF41DD4A1A000D15F59 /* DRMobile2 */;
+			targetProxy = 66E1C00E1DD4A1A000D15F59 /* PBXContainerItemProxy */;
+		};
+		66E1C01A1DD4A1A000D15F59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 66E1BFF41DD4A1A000D15F59 /* DRMobile2 */;
+			targetProxy = 66E1C0191DD4A1A000D15F59 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		66E1C0001DD4A1A000D15F59 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66E1C0011DD4A1A000D15F59 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		66E1C0051DD4A1A000D15F59 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66E1C0061DD4A1A000D15F59 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		66E1C01F1DD4A1A000D15F59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		66E1C0201DD4A1A000D15F59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		66E1C0221DD4A1A000D15F59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DRMobile2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = test.DRMobile2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		66E1C0231DD4A1A000D15F59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DRMobile2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = test.DRMobile2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		66E1C0251DD4A1A000D15F59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DRMobile2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = test.DRMobile2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DRMobile2.app/DRMobile2";
+			};
+			name = Debug;
+		};
+		66E1C0261DD4A1A000D15F59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DRMobile2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = test.DRMobile2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DRMobile2.app/DRMobile2";
+			};
+			name = Release;
+		};
+		66E1C0281DD4A1A000D15F59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = DRMobile2UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = test.DRMobile2UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = DRMobile2;
+			};
+			name = Debug;
+		};
+		66E1C0291DD4A1A000D15F59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = DRMobile2UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = test.DRMobile2UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = DRMobile2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		66E1BFF01DD4A1A000D15F59 /* Build configuration list for PBXProject "DRMobile2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66E1C01F1DD4A1A000D15F59 /* Debug */,
+				66E1C0201DD4A1A000D15F59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66E1C0211DD4A1A000D15F59 /* Build configuration list for PBXNativeTarget "DRMobile2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66E1C0221DD4A1A000D15F59 /* Debug */,
+				66E1C0231DD4A1A000D15F59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		66E1C0241DD4A1A000D15F59 /* Build configuration list for PBXNativeTarget "DRMobile2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66E1C0251DD4A1A000D15F59 /* Debug */,
+				66E1C0261DD4A1A000D15F59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		66E1C0271DD4A1A000D15F59 /* Build configuration list for PBXNativeTarget "DRMobile2UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66E1C0281DD4A1A000D15F59 /* Debug */,
+				66E1C0291DD4A1A000D15F59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 66E1BFED1DD4A1A000D15F59 /* Project object */;
+}
