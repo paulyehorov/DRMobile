@@ -15,9 +15,10 @@ class DataRobotNotifier: NSObject, UNUserNotificationCenterDelegate {
     private let pollInterval: UInt32 = 1
     private let drService = DataRobotService.sharedInstance
     private let requestIdentifier = "DataRobotRequest"
+    private var isFirstRun: Bool = true
     private var isRunning: Bool = false
     
-    private var projectIds: [String] = []
+    private var projects: [String:String] = [:]
     private var projectToJobs: [String:[String:String]] = [:]
     
     private func sendNotification(title: String, subtitle: String, body: String) {
@@ -42,41 +43,26 @@ class DataRobotNotifier: NSObject, UNUserNotificationCenterDelegate {
     
     private func updateProjects() throws {
         try! drService.getProjects { result in
-            var newProjectIds: [String] = []
-            var newProjectNames: [String: String] = [:]
+            var newProjects: [String: String] = [:]
             for project in result {
                 let projectId = project["id"] as! String
-                newProjectIds.append(projectId)
-                newProjectNames[projectId] = project["projectName"] as! String
+                newProjects[projectId] = project["projectName"] as! String
             }
-            let newProjects = Set(newProjectIds).subtracting(Set(self.projectIds))
-            for id in newProjects {
-                self.sendNotification(title: "Project has been created", subtitle: "\(newProjectNames[id]!)", body: "New project ID: \(id)")
-            }
-            
-            self.projectIds = newProjectIds
-            print(self.projectIds)
-        }
-    }
-    
-    private func updateJobs() throws {
-        let projects = self.projectIds
-        for id in projects {
-            try! drService.getJobs(projectId: id) { result in
-                var previousJobs = self.projectToJobs[id] ?? [:]
-                for job in result {
-                    //let jobId = job["id"] as! String
-                    //let jobType = job["jobType"] as! String
-                    
+            if (!self.isFirstRun) {
+                let diff = Set(newProjects.keys).subtracting(Set(self.projects.keys))
+                for id in diff {
+                    self.sendNotification(title: "Project has been created", subtitle: "\(newProjects[id]!)", body: "New project ID: \(id)")
                 }
             }
+            self.projects = newProjects
+            self.isFirstRun = false
         }
     }
     
     private func run() throws {
         while (isRunning) {
             try! updateProjects()
-        
+
             sleep(pollInterval)
         }
     }
@@ -90,6 +76,7 @@ class DataRobotNotifier: NSObject, UNUserNotificationCenterDelegate {
     
     func stop() {
         isRunning = false
+        isFirstRun = true
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {

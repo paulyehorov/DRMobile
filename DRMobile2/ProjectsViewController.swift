@@ -38,7 +38,8 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
         try! drService.getProjects { result in
             for project in result {
                 let projectName = project["projectName"] as! String
-                self.projectsList.append(projectName)
+                let projectId = project["id"] as! String
+                self.projectsList.append("\(projectName): \(projectId)")
                 
             }
             print(self.projectsList)
