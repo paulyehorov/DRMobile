@@ -29,7 +29,7 @@ class DataRobotService {
         for (key, val) in headers {
             request.setValue(val, forHTTPHeaderField: key)
         }
-        if (method == "POST") {
+        if (method == "POST" || method == "PATCH" || method == "PUT") {
             let jsonData = try! JSONSerialization.data(withJSONObject: requestJson, options: .prettyPrinted)
             request.httpBody = jsonData
         }
@@ -151,7 +151,6 @@ class DataRobotService {
     func startAutopilot(projectId: String, featureListId: String, callback: @escaping () -> Swift.Void) throws {
         let request = ["featurelistId": featureListId, "mode": "auto"]
         try sendRequestWithToken(requestJson: request, route: "projects/\(projectId)/autopilots", method: "POST") { result in
-            print(result)
             callback()
         }
     }
@@ -159,7 +158,6 @@ class DataRobotService {
     func setTarget(projectId: String, target: String, callback: @escaping () -> Swift.Void) throws {
         let request = ["target": target]
         try sendRequestWithToken(requestJson: request, route: "projects/\(projectId)/aim", method: "PATCH") { result in
-            print(result)
             callback()
         }
     }
