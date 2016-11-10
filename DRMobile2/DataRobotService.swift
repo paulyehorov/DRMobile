@@ -64,6 +64,20 @@ class DataRobotService {
         return sendRequest(requestJson: requestJson, headers: headers, route: route, method: method, callback: callback)
     }
     
+    private func getObjects(route: String, callback: @escaping ([[String:Any]]) -> Swift.Void) throws {
+        try self.sendRequestWithToken(requestJson: nil, route: route, method: "GET") { result in
+            let objects = result as! [[String:Any]]
+            callback(objects)
+        }
+    }
+    
+    private func getObject(route: String, callback: @escaping ([String:Any]) -> Swift.Void) throws {
+        try self.sendRequestWithToken(requestJson: nil, route: route, method: "GET") { result in
+            let object = result as! [String:Any]
+            callback(object)
+        }
+    }
+    
     func waitForToken(timeout: UInt32, retries: Int) {
         for _ in 1...retries {
             do {
@@ -89,9 +103,42 @@ class DataRobotService {
     }
     
     func getProjects(callback: @escaping ([[String:Any]]) -> Swift.Void) throws {
-        try self.sendRequestWithToken(requestJson: nil, route: "projects", method: "GET") { result in
-            let projects = result as! [[String:Any]]
-            callback(projects)
-        }
+        try getObjects(route: "projects", callback: callback)
+    }
+    
+    func getProject(projectId: String, callback: @escaping ([String:Any]) -> Swift.Void) throws {
+        try getObject(route: "projects/\(projectId)", callback: callback)
+    }
+    
+    func getFeatures(projectId: String, callback: @escaping ([[String:Any]]) -> Swift.Void) throws {
+        try getObjects(route: "projects/\(projectId)/features", callback: callback)
+    }
+    
+    func getFeature(projectId: String, featureName: String, callback: @escaping ([String:Any]) -> Swift.Void) throws {
+        try getObject(route: "projects/\(projectId)/features/\(featureName)", callback: callback)
+    }
+    
+    func getFeatureLists(projectId: String, callback: @escaping ([[String:Any]]) -> Swift.Void) throws {
+        try getObjects(route: "projects/\(projectId)/featurelists", callback: callback)
+    }
+    
+    func getFeatureList(projectId: String, featureListId: String, callback: @escaping ([String:Any]) -> Swift.Void) throws {
+        try getObject(route: "projects/\(projectId)/featurelists/\(featureListId)", callback: callback)
+    }
+    
+    func getModels(projectId: String, callback: @escaping ([[String:Any]]) -> Swift.Void) throws {
+        try getObjects(route: "projects/\(projectId)/models", callback: callback)
+    }
+    
+    func getModel(projectId: String, modelId: String, callback: @escaping ([String:Any]) -> Swift.Void) throws {
+        try getObject(route: "projects/\(projectId)/models/\(modelId)", callback: callback)
+    }
+    
+    func getModelJobs(projectId: String, callback: @escaping ([[String:Any]]) -> Swift.Void) throws {
+        try getObjects(route: "projects/\(projectId)/modelJobs", callback: callback)
+    }
+    
+    func getModelJob(projectId: String, jobId: String, callback: @escaping ([String:Any]) -> Swift.Void) throws {
+        try getObject(route: "projects/\(projectId)/modelJobs/\(jobId)", callback: callback)
     }
 }
