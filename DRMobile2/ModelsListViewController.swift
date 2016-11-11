@@ -17,6 +17,8 @@ class ModelsListViewController: UIViewController, UITableViewDelegate, UITableVi
     var modelsList: [String:String] = [:]
     var modelIdToPass: String = ""
     
+    var selectedModel: String!
+    
     @IBOutlet weak var tableModelsList: UITableView!
     @IBOutlet weak var modelsTabBarItem: UITabBarItem!
     
@@ -37,6 +39,22 @@ class ModelsListViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let indexPath = tableView.indexPathForSelectedRow;
+        
+        selectedModel = Array(self.modelsList.keys)[indexPath!.row]
+        performSegue(withIdentifier: "moveToModelDetails", sender: self)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "moveToModelDetails") {
+            let modeDetails = segue.destination as! ModelDetailsViewController
+            modeDetails.modelId = selectedModel!
+            modeDetails.projectId = projectId!
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,7 +63,7 @@ class ModelsListViewController: UIViewController, UITableViewDelegate, UITableVi
         // Do any additional setup after loading the view.
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        self.refreshControl.addTarget(self, action: #selector(ProjectsViewController.refresh), for: UIControlEvents.valueChanged)
+        self.refreshControl.addTarget(self, action: #selector(ModelsListViewController.refresh), for: UIControlEvents.valueChanged)
         
         self.tableModelsList.delegate = self
         self.tableModelsList.dataSource = self

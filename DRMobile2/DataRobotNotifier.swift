@@ -12,6 +12,8 @@ import  UserNotifications
 
 class DataRobotNotifier: NSObject, UNUserNotificationCenterDelegate {
     
+    static let sharedInstance = DataRobotNotifier()
+    
     private let pollInterval: UInt32 = 2
     private let drService = DataRobotService.sharedInstance
     private let requestIdentifier = "DataRobotRequest"
@@ -96,6 +98,10 @@ class DataRobotNotifier: NSObject, UNUserNotificationCenterDelegate {
 
             sleep(pollInterval)
         }
+    }
+    
+    func sendNotificationForProject(title: String, body: String, projectId: String) {
+        self.sendNotification(title: title, subtitle: "\(self.projects[projectId]!)", body: body)
     }
     
     func start() {

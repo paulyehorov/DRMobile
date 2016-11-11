@@ -14,6 +14,7 @@ class ModelingViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var targetTextField: UITextField!
     @IBOutlet weak var featureListPicker: UIPickerView!
     
+    var drNotifier = DataRobotNotifier.sharedInstance
     var drService = DataRobotService.sharedInstance
     
     var featureLists: [String:String] = [:]
@@ -43,11 +44,10 @@ class ModelingViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBAction func runModel(_ sender: Any) {
         let target = targetTextField.text!
         try! drService.setTarget(projectId: projectId, target: target) {
-            try! self.drService.startAutopilot(projectId: self.projectId, featureListId: self.selectedList) { }
+            try! self.drService.startAutopilot(projectId: self.projectId, featureListId: self.selectedList) {
+                self.drNotifier.sendNotificationForProject(title: "The Autopilot has been started", body: "Check out your models soon", projectId: self.projectId!)
+            }
         }
-        runModelButton.isEnabled = false
-        targetTextField.isEnabled = false
-        featureListPicker.isUserInteractionEnabled = false
     }
     
     override func viewDidLoad() {
