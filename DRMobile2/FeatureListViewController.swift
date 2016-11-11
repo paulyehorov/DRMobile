@@ -1,5 +1,5 @@
 //
-//  ModelsListViewController.swift
+//  FeaturesListViewController.swift
 //  DRMobile2
 //
 //  Created by Paul Yehorov on 11/11/16.
@@ -8,15 +8,13 @@
 
 import UIKit
 
-class ModelsListViewController: UIViewController {
-    
-    var passedProjectId:String!
-    
+class FeaturesListViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print("\(passedProjectId)")    }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
