@@ -22,6 +22,7 @@
 		66E1C0391DD5EDB800D15F59 /* FeatureListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1C0381DD5EDB800D15F59 /* FeatureListViewController.swift */; };
 		66E1C03B1DD5F07B00D15F59 /* FeaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1C03A1DD5F07B00D15F59 /* FeaturesViewController.swift */; };
 		66E1C03D1DD5F0B500D15F59 /* ModelingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1C03C1DD5F0B500D15F59 /* ModelingViewController.swift */; };
+		66E1C0411DD6002400D15F59 /* AdditionalImages in Resources */ = {isa = PBXBuildFile; fileRef = 66E1C0401DD6002400D15F59 /* AdditionalImages */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		66E1C0381DD5EDB800D15F59 /* FeatureListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureListViewController.swift; sourceTree = "<group>"; };
 		66E1C03A1DD5F07B00D15F59 /* FeaturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturesViewController.swift; sourceTree = "<group>"; };
 		66E1C03C1DD5F0B500D15F59 /* ModelingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelingViewController.swift; sourceTree = "<group>"; };
+		66E1C0401DD6002400D15F59 /* AdditionalImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AdditionalImages; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		66E1BFF71DD4A1A000D15F59 /* DRMobile2 */ = {
 			isa = PBXGroup;
 			children = (
+				66E1C0401DD6002400D15F59 /* AdditionalImages */,
 				66E1BFF81DD4A1A000D15F59 /* AppDelegate.swift */,
 				66E1BFFA1DD4A1A000D15F59 /* RootViewController.swift */,
 				66E1BFFC1DD4A1A000D15F59 /* DataViewController.swift */,
@@ -259,6 +262,7 @@
 				66E1C0071DD4A1A000D15F59 /* LaunchScreen.storyboard in Resources */,
 				66E1C0041DD4A1A000D15F59 /* Assets.xcassets in Resources */,
 				66E1C0021DD4A1A000D15F59 /* Main.storyboard in Resources */,
+				66E1C0411DD6002400D15F59 /* AdditionalImages in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

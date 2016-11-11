@@ -8,15 +8,57 @@
 
 import UIKit
 
-class ModelsListViewController: UIViewController {
+class ModelsListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+    
+    let drService = DataRobotService.sharedInstance
     
     var projectId:String!
+    var refreshControl: UIRefreshControl!
+    var modelsList: [String:String] = [:]
+    var modelIdToPass: String = ""
+    
+    @IBOutlet weak var tableModelsList: UITableView!
+    
+    func tableView(_ tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+        return self.modelsList.count;
+    }
+    
+    func tableView(_ tableViewt: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "DRCell")
+        let key = Array(self.modelsList.keys)[indexPath.row]
+        cell.textLabel?.text = self.modelsList[key]
+        cell.detailTextLabel?.text = key
+        
+        return cell
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print("\(projectId)")
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: #selector(ProjectsViewController.refresh), for: UIControlEvents.valueChanged)
+        
+        self.tableModelsList.delegate = self
+        self.tableModelsList.dataSource = self
+        self.tableModelsList.addSubview(self.refreshControl)
+        
+        refresh()
+    }
+
+    func refresh() {
+        try! drService.getModels(projectId: projectId) { result in
+            for model in result {
+                let modelName = model["modelType"] as! String
+                let modelId = model["id"] as! String
+                self.modelsList[modelId] = modelName
+            }
+            DispatchQueue.main.async(execute: {
+                self.tableModelsList.reloadData()
+            })
+            self.refreshControl?.endRefreshing()
+        }
     }
 
     override func didReceiveMemoryWarning() {
