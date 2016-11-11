@@ -10,13 +10,13 @@ import UIKit
 
 class ModelsListViewController: UIViewController {
     
-    var passedProjectId:String!
+    var projectId:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print("\(passedProjectId)")
+        print("\(projectId)")
     }
 
     override func didReceiveMemoryWarning() {

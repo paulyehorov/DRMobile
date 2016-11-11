@@ -35,7 +35,7 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
         // TODO: go to project details here (on cell tap handler)
         let indexPath = tableView.indexPathForSelectedRow;
         
-        let projectIdToPass = Array(self.projectsList.keys)[indexPath!.row]
+        projectIdToPass = Array(self.projectsList.keys)[indexPath!.row]
         performSegue(withIdentifier: "moveToModelsList", sender: self)
         print("\(projectIdToPass)")
     }
@@ -43,9 +43,17 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "moveToModelsList") {
             let tabController = segue.destination as! UITabBarController
-            let viewController = tabController.viewControllers![0] as! ModelsListViewController
-            viewController.passedProjectId = projectIdToPass
-            print(viewController.passedProjectId)
+            let modeListController = tabController.viewControllers![0] as! ModelsListViewController
+            modeListController.projectId = projectIdToPass
+            
+            let featuresController = tabController.viewControllers![1] as! FeaturesViewController
+            featuresController.projectId = projectIdToPass
+            
+            let featureListController = tabController.viewControllers![2] as! FeaturesListViewController
+            featureListController.projectId = projectIdToPass
+            
+            let modelingController = tabController.viewControllers![3] as! ModelingViewController
+            modelingController.projectId = projectIdToPass
         }
     }
     

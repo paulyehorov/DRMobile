@@ -10,6 +10,8 @@ import UIKit
 
 class FeaturesListViewController: UIViewController {
 
+    var projectId:String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
