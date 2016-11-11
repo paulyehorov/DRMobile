@@ -8,21 +8,61 @@
 
 import UIKit
 
-class FeaturesViewController: UIViewController {
+class FeaturesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    var drService = DataRobotService.sharedInstance
     var projectId:String!
+    
+    @IBOutlet weak var featureTableView: UITableView!
+    typealias FeatureInfo = (featureType: String, uniqueCount: Int, naCount: Int)
+    var features:[String:FeatureInfo] = [:]
+
+    func tableView(_ tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+        return self.features.count;
+    }
+    
+    func tableView(_ tableViewt: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "DRFeaturesCell")
+        let key = Array(self.features.keys)[indexPath.row]
+        let info = self.features[key]!
+        cell.textLabel?.text = key
+        cell.detailTextLabel?.text = "\(info.featureType), uniques: \(info.uniqueCount), N/A: \(info.naCount)"
+        
+        return cell
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.featureTableView.delegate = self
+        self.featureTableView.dataSource = self
+        
+        refresh()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+    func refresh() {
+        try! drService.getFeatures(projectId: projectId!) { result in
+            var newFeatures:[String:FeatureInfo] = [:]
+            for feature in result {
+                let featureName = feature["name"] as! String
+                let featureType = feature["featureType"] as! String
+                let uniqueCount = feature["uniqueCount"] as! Int
+                let naCount = feature["naCount"] as! Int
+                
+                newFeatures[featureName] = (featureType, uniqueCount, naCount)
+                print(feature)
+            }
+            self.features = newFeatures
+            DispatchQueue.main.async(execute: {
+                self.featureTableView.reloadData()
+            })
+        }
+    }
 
     /*
     // MARK: - Navigation
