@@ -31,6 +31,7 @@
 		66E1C04F1DD6543800D15F59 /* ModelDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1C04E1DD6543800D15F59 /* ModelDetailsViewController.swift */; };
 		66E1C0551DD657E300D15F59 /* datarobot.png in Resources */ = {isa = PBXBuildFile; fileRef = 66E1C0541DD657E300D15F59 /* datarobot.png */; };
 		66E1C0571DD659F700D15F59 /* Robot-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 66E1C0561DD659F700D15F59 /* Robot-icon.png */; };
+		66E1C0591DD675D300D15F59 /* CreateFeatureListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1C0581DD675D300D15F59 /* CreateFeatureListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		66E1C04E1DD6543800D15F59 /* ModelDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelDetailsViewController.swift; sourceTree = "<group>"; };
 		66E1C0541DD657E300D15F59 /* datarobot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = datarobot.png; sourceTree = "<group>"; };
 		66E1C0561DD659F700D15F59 /* Robot-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Robot-icon.png"; sourceTree = "<group>"; };
+		66E1C0581DD675D300D15F59 /* CreateFeatureListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateFeatureListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 		66E1BFF71DD4A1A000D15F59 /* DRMobile2 */ = {
 			isa = PBXGroup;
 			children = (
+				66E1C0581DD675D300D15F59 /* CreateFeatureListViewController.swift */,
 				66E1C0541DD657E300D15F59 /* datarobot.png */,
 				66E1C0461DD64CB900D15F59 /* brain.png */,
 				66E1C0471DD64CB900D15F59 /* gear.png */,
@@ -329,6 +332,7 @@
 				66E1BFFF1DD4A1A000D15F59 /* ModelController.swift in Sources */,
 				66E1BFFD1DD4A1A000D15F59 /* DataViewController.swift in Sources */,
 				66E1BFF91DD4A1A000D15F59 /* AppDelegate.swift in Sources */,
+				66E1C0591DD675D300D15F59 /* CreateFeatureListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

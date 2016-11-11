@@ -30,6 +30,8 @@ class ModelDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "AdditionalImages/background.jpg")!)
 
         refresh()
     }
@@ -65,6 +67,7 @@ class ModelDetailsViewController: UIViewController {
                 self.textFeatureListName.text = "\(self.featurelistName)"
                 self.textModelCategory.text = "\(self.modelCategory)"
                 self.textSampleSize.text = "\(Int(self.samplePct)) %"
+                self.textModelMetrics.text = "\(self.metrics["holdout"]) : \(self.metrics["validation"]) : \(self.metrics["crossValidation"])"
             })
 
         }
