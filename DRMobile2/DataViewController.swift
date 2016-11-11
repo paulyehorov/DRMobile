@@ -14,7 +14,7 @@ class DataViewController: UIViewController {
     var dataObject: String = ""
 
     let drService = DataRobotService.sharedInstance
-    let drNotifier = DataRobotNotifier()
+    let drNotifier = DataRobotNotifier.sharedInstance
 
     @IBOutlet weak var textUserEmail: UITextField!
     @IBOutlet weak var textUserPassword: UITextField!
