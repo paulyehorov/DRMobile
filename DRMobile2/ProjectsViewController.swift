@@ -42,7 +42,8 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "moveToModelsList") {
-            let viewController = segue.destination as! ModelsListViewController
+            let tabController = segue.destination as! UITabBarController
+            let viewController = tabController.viewControllers![0] as! ModelsListViewController
             viewController.passedProjectId = projectIdToPass
             print(viewController.passedProjectId)
         }
