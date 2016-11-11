@@ -55,7 +55,6 @@ class FeaturesViewController: UIViewController, UITableViewDelegate, UITableView
                 let naCount = feature["naCount"] as! Int
                 
                 newFeatures[featureName] = (featureType, uniqueCount, naCount)
-                print(feature)
             }
             self.features = newFeatures
             DispatchQueue.main.async(execute: {

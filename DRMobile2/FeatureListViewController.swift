@@ -8,14 +8,35 @@
 
 import UIKit
 
-class FeaturesListViewController: UIViewController {
+class FeaturesListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var featureListsTableView: UITableView!
     var projectId:String!
+    
+    var drService = DataRobotService.sharedInstance
+    var featureLists: [String:String] = [:]
+    
+    func tableView(_ tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+        return self.featureLists.count;
+    }
+    
+    func tableView(_ tableViewt: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "DRFeatureListsCell")
+        let key = Array(self.featureLists.keys)[indexPath.row]
+        let name = self.featureLists[key]!
+        cell.textLabel?.text = name
+        cell.detailTextLabel?.text = key
+        
+        return cell
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.featureListsTableView.delegate = self
+        self.featureListsTableView.dataSource = self
+        
+        refresh()
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,6 +44,21 @@ class FeaturesListViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func refresh() {
+        try! drService.getFeatureLists(projectId: projectId!) { result in
+            var newFeatureLists:[String:String] = [:]
+            for featureList in result {
+                let name = featureList["name"] as! String
+                let id = featureList["id"] as! String
+                
+                newFeatureLists[id] = name
+            }
+            self.featureLists = newFeatureLists
+            DispatchQueue.main.async(execute: {
+                self.featureListsTableView.reloadData()
+            })
+        }
+    }
 
     /*
     // MARK: - Navigation
