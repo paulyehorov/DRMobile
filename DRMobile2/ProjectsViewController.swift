@@ -25,6 +25,9 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableViewt: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "DRCell")
         let key = Array(self.projectsList.keys)[indexPath.row]
+        cell.backgroundColor = UIColor.init(white: 1, alpha: 0.25)
+        cell.textLabel?.textColor = UIColor.white
+        cell.detailTextLabel?.textColor = UIColor.white
         cell.textLabel?.text = self.projectsList[key]
         cell.detailTextLabel?.text = key
         
@@ -68,6 +71,9 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableProjectsList.delegate = self
         self.tableProjectsList.dataSource = self
         self.tableProjectsList.addSubview(self.refreshControl)
+        
+        tableProjectsList.backgroundColor = UIColor.init(white: 1, alpha: 0)
+        tableProjectsList.tableFooterView = UIView(frame: .zero)
         
         refresh()
     }

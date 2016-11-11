@@ -19,6 +19,7 @@ class DataViewController: UIViewController {
     @IBOutlet weak var textUserEmail: UITextField!
     @IBOutlet weak var textUserPassword: UITextField!
     @IBOutlet weak var textUserToken: UILabel!
+    @IBOutlet weak var buttonLogIn: UIButton!
     @IBAction func generateUserToken(_ sender: Any) {
         // create the request
         drService.login(username: String!(textUserEmail.text!), password: String!(textUserPassword.text!)) { isSuccess in
@@ -39,6 +40,9 @@ class DataViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "AdditionalImages/background.jpg")!)
+        
+        let btnImage = UIImage(named: "AdditionalImages/Rectangle.png")
+        buttonLogIn.setBackgroundImage(btnImage, for: UIControlState.normal)
     }
 
     override func didReceiveMemoryWarning() {

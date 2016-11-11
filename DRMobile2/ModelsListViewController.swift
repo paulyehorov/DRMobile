@@ -27,6 +27,9 @@ class ModelsListViewController: UIViewController, UITableViewDelegate, UITableVi
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "DRCell")
         let key = Array(self.modelsList.keys)[indexPath.row]
         let name = self.modelsList[key]
+        cell.backgroundColor = UIColor.init(white: 1, alpha: 0.25)
+        cell.textLabel?.textColor = UIColor.white
+        cell.detailTextLabel?.textColor = UIColor.white
         cell.textLabel?.text = name
         cell.detailTextLabel?.text = key
         
@@ -46,6 +49,9 @@ class ModelsListViewController: UIViewController, UITableViewDelegate, UITableVi
         self.tableModelsList.delegate = self
         self.tableModelsList.dataSource = self
         self.tableModelsList.addSubview(self.refreshControl)
+        
+        tableModelsList.backgroundColor = UIColor.init(white: 1, alpha: 0)
+        tableModelsList.tableFooterView = UIView(frame: .zero)
         
         refresh()
     }

@@ -24,6 +24,9 @@ class FeaturesListViewController: UIViewController, UITableViewDelegate, UITable
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "DRFeatureListsCell")
         let key = Array(self.featureLists.keys)[indexPath.row]
         let name = self.featureLists[key]!
+        cell.backgroundColor = UIColor.init(white: 1, alpha: 0.25)
+        cell.textLabel?.textColor = UIColor.white
+        cell.detailTextLabel?.textColor = UIColor.white
         cell.textLabel?.text = name
         cell.detailTextLabel?.text = key
         
@@ -38,6 +41,9 @@ class FeaturesListViewController: UIViewController, UITableViewDelegate, UITable
         self.featureListsTableView.delegate = self
         self.featureListsTableView.dataSource = self
         
+        featureListsTableView.backgroundColor = UIColor.init(white: 1, alpha: 0)
+        featureListsTableView.tableFooterView = UIView(frame: .zero)
+
         refresh()
     }
 

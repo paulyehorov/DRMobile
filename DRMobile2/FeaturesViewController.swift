@@ -25,6 +25,9 @@ class FeaturesViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "DRFeaturesCell")
         let key = Array(self.features.keys)[indexPath.row]
         let info = self.features[key]!
+        cell.backgroundColor = UIColor.init(white: 1, alpha: 0.25)
+        cell.textLabel?.textColor = UIColor.white
+        cell.detailTextLabel?.textColor = UIColor.white
         cell.textLabel?.text = key
         cell.detailTextLabel?.text = "\(info.featureType), uniques: \(info.uniqueCount), N/A: \(info.naCount)"
         
@@ -38,6 +41,9 @@ class FeaturesViewController: UIViewController, UITableViewDelegate, UITableView
 
         self.featureTableView.delegate = self
         self.featureTableView.dataSource = self
+        
+        featureTableView.backgroundColor = UIColor.init(white: 1, alpha: 0)
+        featureTableView.tableFooterView = UIView(frame: .zero)
         
         refresh()
     }
