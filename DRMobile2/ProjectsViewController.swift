@@ -74,11 +74,13 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func refresh() {
         try! drService.getProjects { result in
+            var newProjectsList: [String:String] = [:]
             for project in result {
                 let projectName = project["projectName"] as! String
                 let projectId = project["id"] as! String
-                self.projectsList[projectId] = projectName
+                newProjectsList[projectId] = projectName
             }
+            self.projectsList = newProjectsList
             DispatchQueue.main.async(execute: {
                 self.tableProjectsList.reloadData()
             })
