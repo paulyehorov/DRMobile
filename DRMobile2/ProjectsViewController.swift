@@ -11,12 +11,12 @@ import UIKit
 class ProjectsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let drService = DataRobotService.sharedInstance
-
+    
     var refreshControl: UIRefreshControl!
     @IBOutlet weak var tableProjectsList: UITableView!
-    @IBOutlet weak var textDebugLabel: UILabel!
     
     var projectsList: [String:String] = [:]
+    var projectIdToPass:String!
     
     
     func tableView(_ tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
@@ -32,8 +32,23 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO: go to project details here (on cell tap handler)
+        let indexPath = tableView.indexPathForSelectedRow;
+        let currentCell = tableView.cellForRow(at: indexPath!) as UITableViewCell!;
+        
+        projectIdToPass = currentCell?.detailTextLabel?.text
+        performSegue(withIdentifier: "moveToModelsList", sender: self)
+        print("\(projectIdToPass)")
+        
+        func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+            
+            if (segue.identifier == "moveToModelsList") {
+                let viewController = segue.destination as! ModelsListViewController
+                viewController.passedProjectId = projectIdToPass as String!
+            }
+            
+        }
     }
     
     override func viewDidLoad() {
@@ -69,15 +84,15 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

@@ -14,7 +14,7 @@ class DataViewController: UIViewController {
     var dataObject: String = ""
 
     let drService = DataRobotService.sharedInstance
-    let drNotifier = DataRobotNotifier()
+//    let drNotifier = DataRobotNotifier()
 
     @IBOutlet weak var textUserEmail: UITextField!
     @IBOutlet weak var textUserPassword: UITextField!
@@ -23,17 +23,8 @@ class DataViewController: UIViewController {
         // create the request
         drService.login(username: String!(textUserEmail.text!), password: String!(textUserPassword.text!)) { isSuccess in
             if (isSuccess) {
-//                try! self.drService.getProjects { result in
-//                    for project in result {
-//                        let projectName = project["projectName"] as! String
-//                        print(projectName)
-//                        DispatchQueue.main.async(execute: {
-//                            self.textUserToken.text = "\(projectName)"
-//                        })
-//                    }
-//                }
                 print("LOGIN SUCCEED")
-                self.drNotifier.start()
+//                self.drNotifier.start()
                 OperationQueue.main.addOperation {
                     self.performSegue(withIdentifier: "moveToProjectsList", sender: self)
                 }
