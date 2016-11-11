@@ -162,6 +162,24 @@
             </objects>
             <point key="canvasLocation" x="3008.8000000000002" y="-243.32833583208398"/>
         </scene>
+        <!--Model Details-->
+        <scene sceneID="8pZ-kz-t3W">
+            <objects>
+                <viewController title="Model Details" id="8Ih-Ii-AYT" customClass="ModelDetailsViewController" customModule="DRMobile2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cs9-s7-9QB"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gaq-ar-cbu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Q8Z-M9-H6L">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L5U-ja-9AF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3887" y="-1357"/>
+        </scene>
         <!--Models-->
         <scene sceneID="yCv-0q-iGd">
             <objects>
@@ -186,6 +204,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableModelsList" destination="PO1-mA-bQK" id="bLZ-bT-djg"/>
+                        <segue destination="8Ih-Ii-AYT" kind="show" identifier="moveToModelDetails" id="Ytz-Ro-J6i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="40A-Z5-GkY" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -17,6 +17,8 @@ class ModelsListViewController: UIViewController, UITableViewDelegate, UITableVi
     var modelsList: [String:String] = [:]
     var modelIdToPass: String = ""
     
+    var selectedModel: String!
+    
     @IBOutlet weak var tableModelsList: UITableView!
     
     func tableView(_ tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
@@ -31,6 +33,22 @@ class ModelsListViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.detailTextLabel?.text = key
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let indexPath = tableView.indexPathForSelectedRow;
+        
+        selectedModel = Array(self.modelsList.keys)[indexPath!.row]
+        performSegue(withIdentifier: "moveToModelDetails", sender: self)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "moveToModelDetails") {
+            let modeDetails = segue.destination as! ModelDetailsViewController
+            modeDetails.modelId = selectedModel!
+            modeDetails.projectId = projectId!
+        }
     }
     
     override func viewDidLoad() {
