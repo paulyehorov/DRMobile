@@ -14,7 +14,6 @@ class CreateFeatureListViewController: UIViewController, UITableViewDelegate, UI
     
     var drService = DataRobotService.sharedInstance
     var projectId: String!
-    var listCounter = 1
     
     typealias FeatureInfo = (featureType: String, uniqueCount: Int, naCount: Int)
     var features:[String:FeatureInfo] = [:]
@@ -91,8 +90,7 @@ class CreateFeatureListViewController: UIViewController, UITableViewDelegate, UI
     
     @IBAction func saveFeatureList(_ sender: Any) {
         let date = Int(NSDate.timeIntervalSinceReferenceDate)
-        let listName = "Feature List \(listCounter)_\(date)"
-        listCounter += 1
+        let listName = "Feature List \(date)"
         try! drService.createFeatureList(projectId: projectId, name: listName, features: Array(checkedFeatures)) {
         }
         self.performSegue(withIdentifier: "backToFeatureList", sender: self)
