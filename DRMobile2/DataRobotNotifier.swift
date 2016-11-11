@@ -12,17 +12,18 @@ import  UserNotifications
 
 class DataRobotNotifier: NSObject, UNUserNotificationCenterDelegate {
     
-    private let pollInterval: UInt32 = 1
+    private let pollInterval: UInt32 = 2
     private let drService = DataRobotService.sharedInstance
     private let requestIdentifier = "DataRobotRequest"
     private var isFirstRun: Bool = true
     private var isRunning: Bool = false
     
+    typealias ProjectStatus = (autopilot: Bool, stage: String)
+    
     private var projects: [String:String] = [:]
-    private var projectToJobs: [String:[String:String]] = [:]
+    private var projectStatuses: [String:ProjectStatus] = [:]
     
     private func sendNotification(title: String, subtitle: String, body: String) {
-        print("Notification will be triggered in five seconds.")
         let content = UNMutableNotificationContent()
         content.title = title
         content.subtitle = subtitle
@@ -37,6 +38,35 @@ class DataRobotNotifier: NSObject, UNUserNotificationCenterDelegate {
         UNUserNotificationCenter.current().add(request){ error in
             if (error != nil) {
                 print(error!.localizedDescription)
+            }
+        }
+    }
+    
+    private func updateProjectStatuses() throws {
+        for id in projects.keys {
+            try! drService.getProjectStatus(projectId: id) { result in
+                let newAutopilot = result["autopilotDone"] as! Bool
+                let newStage = result["stage"] as! String
+                if let prevStatus = self.projectStatuses[id] {
+                    let prevAutopilot = prevStatus.autopilot
+                    let prevStage = prevStatus.stage
+                    if (prevAutopilot != newAutopilot) {
+                        self.sendNotification(title: "Project autopilot has finished",
+                                              subtitle: "\(self.projects[id]!)",
+                                              body: "")
+                    } else if (prevStage != newStage) {
+                        if (newStage == "aim") {
+                            self.sendNotification(title: "EDA has finished",
+                                                  subtitle: "\(self.projects[id]!)",
+                                                  body: "Project is ready to set target")
+                        } else if (newStage == "modeling") {
+                            self.sendNotification(title: "Target analyzed successfully",
+                                                  subtitle: "\(self.projects[id]!)",
+                                                  body: "Project is ready for modeling")
+                        }
+                    }
+                }
+                self.projectStatuses[id] = (newAutopilot, newStage)
             }
         }
     }
@@ -56,6 +86,7 @@ class DataRobotNotifier: NSObject, UNUserNotificationCenterDelegate {
             }
             self.projects = newProjects
             self.isFirstRun = false
+            try! self.updateProjectStatuses()
         }
     }
     

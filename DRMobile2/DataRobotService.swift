@@ -116,6 +116,10 @@ class DataRobotService {
         try getObject(route: "projects/\(projectId)", callback: callback)
     }
     
+    func getProjectStatus(projectId: String, callback: @escaping ([String:Any]) -> Swift.Void) throws {
+        try getObject(route: "projects/\(projectId)/status", callback: callback)
+    }
+    
     func getFeatures(projectId: String, callback: @escaping ([[String:Any]]) -> Swift.Void) throws {
         try getObjects(route: "projects/\(projectId)/features", callback: callback)
     }
