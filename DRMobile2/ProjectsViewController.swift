@@ -32,7 +32,6 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: go to project details here (on cell tap handler)
         let indexPath = tableView.indexPathForSelectedRow;
         
         projectIdToPass = Array(self.projectsList.keys)[indexPath!.row]
@@ -58,6 +57,7 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "AdditionalImages/background.jpg")!)
         
