@@ -41,7 +41,7 @@ class ModelsListViewController: UIViewController, UITableViewDelegate, UITableVi
         // Do any additional setup after loading the view.
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        self.refreshControl.addTarget(self, action: #selector(ProjectsViewController.refresh), for: UIControlEvents.valueChanged)
+        self.refreshControl.addTarget(self, action: #selector(ModelsListViewController.refresh), for: UIControlEvents.valueChanged)
         
         self.tableModelsList.delegate = self
         self.tableModelsList.dataSource = self
