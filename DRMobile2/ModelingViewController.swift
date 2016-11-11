@@ -30,10 +30,11 @@ class ModelingViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return featureLists.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        
         let key = Array(self.featureLists.keys)[row]
         let name = self.featureLists[key]!
-        return name
+        return NSAttributedString(string: name, attributes: [NSForegroundColorAttributeName:UIColor.white])
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -52,9 +53,14 @@ class ModelingViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "AdditionalImages/background.jpg")!)
 
         self.featureListPicker.delegate = self
         self.featureListPicker.dataSource = self
+        
+        let btnImage = UIImage(named: "AdditionalImages/start-button-250.png")
+        runModelButton.setBackgroundImage(btnImage, for: UIControlState.normal)
         
         refresh()
     }

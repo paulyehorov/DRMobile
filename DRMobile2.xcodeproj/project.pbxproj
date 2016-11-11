@@ -29,6 +29,8 @@
 		66E1C04C1DD64CB900D15F59 /* spanner.png in Resources */ = {isa = PBXBuildFile; fileRef = 66E1C0481DD64CB900D15F59 /* spanner.png */; };
 		66E1C04D1DD64CB900D15F59 /* text-list.png in Resources */ = {isa = PBXBuildFile; fileRef = 66E1C0491DD64CB900D15F59 /* text-list.png */; };
 		66E1C04F1DD6543800D15F59 /* ModelDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1C04E1DD6543800D15F59 /* ModelDetailsViewController.swift */; };
+		66E1C0551DD657E300D15F59 /* datarobot.png in Resources */ = {isa = PBXBuildFile; fileRef = 66E1C0541DD657E300D15F59 /* datarobot.png */; };
+		66E1C0571DD659F700D15F59 /* Robot-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 66E1C0561DD659F700D15F59 /* Robot-icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		66E1C0481DD64CB900D15F59 /* spanner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spanner.png; sourceTree = "<group>"; };
 		66E1C0491DD64CB900D15F59 /* text-list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text-list.png"; sourceTree = "<group>"; };
 		66E1C04E1DD6543800D15F59 /* ModelDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelDetailsViewController.swift; sourceTree = "<group>"; };
+		66E1C0541DD657E300D15F59 /* datarobot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = datarobot.png; sourceTree = "<group>"; };
+		66E1C0561DD659F700D15F59 /* Robot-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Robot-icon.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,7 @@
 		66E1BFF71DD4A1A000D15F59 /* DRMobile2 */ = {
 			isa = PBXGroup;
 			children = (
+				66E1C0541DD657E300D15F59 /* datarobot.png */,
 				66E1C0461DD64CB900D15F59 /* brain.png */,
 				66E1C0471DD64CB900D15F59 /* gear.png */,
 				66E1C0481DD64CB900D15F59 /* spanner.png */,
@@ -139,6 +144,7 @@
 				66E1C02A1DD4DA8000D15F59 /* DataRobotService.swift */,
 				66E1BFFE1DD4A1A000D15F59 /* ModelController.swift */,
 				66E1C0001DD4A1A000D15F59 /* Main.storyboard */,
+				66E1C0561DD659F700D15F59 /* Robot-icon.png */,
 				66E1C03A1DD5F07B00D15F59 /* FeaturesViewController.swift */,
 				66E1C0381DD5EDB800D15F59 /* FeatureListViewController.swift */,
 				66E1C03C1DD5F0B500D15F59 /* ModelingViewController.swift */,
@@ -284,7 +290,9 @@
 				66E1C0021DD4A1A000D15F59 /* Main.storyboard in Resources */,
 				66E1C04A1DD64CB900D15F59 /* brain.png in Resources */,
 				66E1C04D1DD64CB900D15F59 /* text-list.png in Resources */,
+				66E1C0551DD657E300D15F59 /* datarobot.png in Resources */,
 				66E1C0411DD6002400D15F59 /* AdditionalImages in Resources */,
+				66E1C0571DD659F700D15F59 /* Robot-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
