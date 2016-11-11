@@ -8,14 +8,55 @@
 
 import UIKit
 
-class ModelingViewController: UIViewController {
-
+class ModelingViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    @IBOutlet weak var runModelButton: UIButton!
+    @IBOutlet weak var targetTextField: UITextField!
+    @IBOutlet weak var featureListPicker: UIPickerView!
+    
+    var drService = DataRobotService.sharedInstance
+    
+    var featureLists: [String:String] = [:]
     var projectId:String!
+    
+    var selectedList: String = ""
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return featureLists.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        let key = Array(self.featureLists.keys)[row]
+        let name = self.featureLists[key]!
+        return name
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let key = Array(self.featureLists.keys)[row]
+        selectedList = key
+    }
+    
+    @IBAction func runModel(_ sender: Any) {
+        let target = targetTextField.text!
+        try! drService.setTarget(projectId: projectId, target: target) {
+            try! self.drService.startAutopilot(projectId: self.projectId, featureListId: self.selectedList) { }
+        }
+        runModelButton.isEnabled = false
+        targetTextField.isEnabled = false
+        featureListPicker.isUserInteractionEnabled = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.featureListPicker.delegate = self
+        self.featureListPicker.dataSource = self
+        
+        refresh()
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,6 +64,22 @@ class ModelingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func refresh() {
+        try! drService.getFeatureLists(projectId: projectId!) { result in
+            var newFeatureLists:[String:String] = [:]
+            for featureList in result {
+                let name = featureList["name"] as! String
+                let id = featureList["id"] as! String
+                
+                newFeatureLists[id] = name
+            }
+            self.featureLists = newFeatureLists
+            self.selectedList = self.featureLists.keys.first!
+            DispatchQueue.main.async(execute: {
+                self.featureListPicker.reloadAllComponents()
+            })
+        }
+    }
 
     /*
     // MARK: - Navigation
