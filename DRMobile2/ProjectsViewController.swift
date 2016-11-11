@@ -16,8 +16,7 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableProjectsList: UITableView!
     
     var projectsList: [String:String] = [:]
-    var projectIdToPass:String!
-    
+    var projectIdToPass: String = ""
     
     func tableView(_ tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         return self.projectsList.count;
@@ -35,19 +34,17 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO: go to project details here (on cell tap handler)
         let indexPath = tableView.indexPathForSelectedRow;
-        let currentCell = tableView.cellForRow(at: indexPath!) as UITableViewCell!;
         
-        projectIdToPass = currentCell?.detailTextLabel?.text
+        let projectIdToPass = Array(self.projectsList.keys)[indexPath!.row]
         performSegue(withIdentifier: "moveToModelsList", sender: self)
         print("\(projectIdToPass)")
-        
-        func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-            
-            if (segue.identifier == "moveToModelsList") {
-                let viewController = segue.destination as! ModelsListViewController
-                viewController.passedProjectId = projectIdToPass as String!
-            }
-            
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "moveToModelsList") {
+            let viewController = segue.destination as! ModelsListViewController
+            viewController.passedProjectId = projectIdToPass
+            print(viewController.passedProjectId)
         }
     }
     
