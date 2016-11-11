@@ -45,9 +45,7 @@ class ModelingViewController: UIViewController, UIPickerViewDataSource, UIPicker
         try! drService.setTarget(projectId: projectId, target: target) {
             try! self.drService.startAutopilot(projectId: self.projectId, featureListId: self.selectedList) { }
         }
-        runModelButton.isEnabled = false
-        targetTextField.isEnabled = false
-        featureListPicker.isUserInteractionEnabled = false
+        self.disableInteraction()
     }
     
     override func viewDidLoad() {
@@ -79,6 +77,19 @@ class ModelingViewController: UIViewController, UIPickerViewDataSource, UIPicker
                 self.featureListPicker.reloadAllComponents()
             })
         }
+        
+        try! drService.getProjectStatus(projectId: projectId) { result in
+            let autopilotDone = result["autopilotDone"] as! Bool
+            if autopilotDone {
+                self.disableInteraction()
+            }
+        }
+    }
+    
+    func disableInteraction() {
+        runModelButton.isEnabled = false
+        targetTextField.isEnabled = false
+        featureListPicker.isUserInteractionEnabled = false
     }
 
     /*
