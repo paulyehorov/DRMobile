@@ -26,7 +26,8 @@ class ModelsListViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableViewt: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "DRCell")
         let key = Array(self.modelsList.keys)[indexPath.row]
-        cell.textLabel?.text = self.modelsList[key]
+        let name = self.modelsList[key]
+        cell.textLabel?.text = name
         cell.detailTextLabel?.text = key
         
         return cell
@@ -52,6 +53,7 @@ class ModelsListViewController: UIViewController, UITableViewDelegate, UITableVi
             for model in result {
                 let modelName = model["modelType"] as! String
                 let modelId = model["id"] as! String
+                
                 self.modelsList[modelId] = modelName
             }
             DispatchQueue.main.async(execute: {
