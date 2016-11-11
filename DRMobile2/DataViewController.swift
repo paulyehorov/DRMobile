@@ -43,6 +43,9 @@ class DataViewController: UIViewController {
         
         let btnImage = UIImage(named: "AdditionalImages/Rectangle.png")
         buttonLogIn.setBackgroundImage(btnImage, for: UIControlState.normal)
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,6 +56,11 @@ class DataViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.dataLabel!.text = dataObject
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
 
 
