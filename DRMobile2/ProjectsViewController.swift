@@ -12,10 +12,12 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
     
     let drService = DataRobotService.sharedInstance
 
+    var refreshControl: UIRefreshControl!
     @IBOutlet weak var tableProjectsList: UITableView!
     @IBOutlet weak var textDebugLabel: UILabel!
     
     var projectsList: [String:String] = [:]
+    
     
     func tableView(_ tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         return self.projectsList.count;
@@ -30,26 +32,36 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // TODO: go to project details here (on cell tap handler)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: #selector(ProjectsViewController.refresh), for: UIControlEvents.valueChanged)
+        
         self.tableProjectsList.delegate = self
         self.tableProjectsList.dataSource = self
-        // Do any additional setup after loading the view.
+        self.tableProjectsList.addSubview(self.refreshControl)
         
+        refresh()
+    }
+    
+    func refresh() {
         try! drService.getProjects { result in
             for project in result {
                 let projectName = project["projectName"] as! String
                 let projectId = project["id"] as! String
                 self.projectsList[projectId] = projectName
             }
-            print(self.projectsList)
-            
             DispatchQueue.main.async(execute: {
                 self.tableProjectsList.reloadData()
             })
+            self.refreshControl?.endRefreshing()
         }
-        
     }
     
     override func didReceiveMemoryWarning() {
