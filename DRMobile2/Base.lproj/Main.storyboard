@@ -192,9 +192,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Models" image="gear.png" id="xE0-zu-LwK"/>
+                    <tabBarItem key="tabBarItem" title="Models" image="gear.png" selectedImage="gear.png" id="xE0-zu-LwK"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="tabBarItem" destination="xE0-zu-LwK" id="beV-cH-qSe"/>
                         <outlet property="tableModelsList" destination="PO1-mA-bQK" id="bLZ-bT-djg"/>
                     </connections>
                 </viewController>
@@ -230,7 +231,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Features" image="spanner.png" id="4iH-Rn-ghE"/>
+                    <tabBarItem key="tabBarItem" title="Features" image="spanner.png" selectedImage="spanner.png" id="4iH-Rn-ghE"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="featureTableView" destination="zlW-Tz-6eO" id="TLj-AM-KKM"/>
@@ -268,7 +269,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Feature Lists" image="text-list.png" id="g6B-Ez-7Hc"/>
+                    <tabBarItem key="tabBarItem" title="Feature Lists" image="text-list.png" selectedImage="text-list.png" id="g6B-Ez-7Hc"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="featureListsTableView" destination="4hr-nZ-qBS" id="gR9-rp-ffT"/>
@@ -326,7 +327,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Modeling" image="brain.png" id="75c-S0-Wjg"/>
+                    <tabBarItem key="tabBarItem" title="Modeling" image="brain.png" selectedImage="brain.png" id="75c-S0-Wjg"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="featureListPicker" destination="k5P-ON-EBj" id="8gn-Bc-iep"/>
@@ -345,5 +346,4 @@
         <image name="spanner.png" width="30" height="30"/>
         <image name="text-list.png" width="30" height="30"/>
     </resources>
-    <color key="tintColor" red="0.99743014574050903" green="0.49468874931335449" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

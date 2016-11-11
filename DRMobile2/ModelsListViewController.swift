@@ -18,6 +18,7 @@ class ModelsListViewController: UIViewController, UITableViewDelegate, UITableVi
     var modelIdToPass: String = ""
     
     @IBOutlet weak var tableModelsList: UITableView!
+    @IBOutlet weak var modelsTabBarItem: UITabBarItem!
     
     func tableView(_ tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         return self.modelsList.count;
@@ -52,6 +53,8 @@ class ModelsListViewController: UIViewController, UITableViewDelegate, UITableVi
         
         tableModelsList.backgroundColor = UIColor.init(white: 1, alpha: 0)
         tableModelsList.tableFooterView = UIView(frame: .zero)
+        
+        UITabBar.appearance().tintColor = UIColor(red: 253/255.0, green: 103/255.0, blue: 33/255.0, alpha: 1.0)
         
         refresh()
     }
