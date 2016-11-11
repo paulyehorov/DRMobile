@@ -32,6 +32,8 @@ class FeaturesListViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "AdditionalImages/background.jpg")!)
 
         self.featureListsTableView.delegate = self
         self.featureListsTableView.dataSource = self

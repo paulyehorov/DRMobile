@@ -33,6 +33,8 @@ class FeaturesViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "AdditionalImages/background.jpg")!)
 
         self.featureTableView.delegate = self
         self.featureTableView.dataSource = self

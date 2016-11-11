@@ -35,6 +35,8 @@ class ModelsListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "AdditionalImages/background.jpg")!)
 
         // Do any additional setup after loading the view.
         self.refreshControl = UIRefreshControl()
