@@ -11,6 +11,7 @@ import UIKit
 class FeaturesListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var featureListsTableView: UITableView!
+    var refreshControl: UIRefreshControl!
     var projectId:String!
     
     var drService = DataRobotService.sharedInstance
@@ -38,12 +39,18 @@ class FeaturesListViewController: UIViewController, UITableViewDelegate, UITable
         
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "AdditionalImages/background.jpg")!)
 
+        // Do any additional setup after loading the view.
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: #selector(FeaturesListViewController.refresh), for: UIControlEvents.valueChanged)
+        
         self.featureListsTableView.delegate = self
         self.featureListsTableView.dataSource = self
+        self.featureListsTableView.addSubview(refreshControl)
         
         featureListsTableView.backgroundColor = UIColor.init(white: 1, alpha: 0)
         featureListsTableView.tableFooterView = UIView(frame: .zero)
-
+        
         refresh()
     }
 
@@ -65,9 +72,21 @@ class FeaturesListViewController: UIViewController, UITableViewDelegate, UITable
             DispatchQueue.main.async(execute: {
                 self.featureListsTableView.reloadData()
             })
+            self.refreshControl?.endRefreshing()
         }
     }
 
+    @IBAction func createFeatureList(_ sender: Any) {
+        performSegue(withIdentifier: "createFeatureList", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "createFeatureList") {            
+            let createFeatureListController = segue.destination as! CreateFeatureListViewController
+            createFeatureListController.projectId = projectId
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

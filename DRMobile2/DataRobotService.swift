@@ -132,6 +132,13 @@ class DataRobotService {
         try getObjects(route: "projects/\(projectId)/featurelists", callback: callback)
     }
     
+    func createFeatureList(projectId: String, name: String, features: [String], callback: @escaping () -> Swift.Void) throws {
+        let request = ["name": name, "features": features] as [String : Any]
+        try sendRequestWithToken(requestJson: request, route: "projects/\(projectId)/featurelists", method: "POST") { result in
+            callback()
+        }
+    }
+    
     func getFeatureList(projectId: String, featureListId: String, callback: @escaping ([String:Any]) -> Swift.Void) throws {
         try getObject(route: "projects/\(projectId)/featurelists/\(featureListId)", callback: callback)
     }
