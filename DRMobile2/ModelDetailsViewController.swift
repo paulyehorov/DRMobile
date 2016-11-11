@@ -20,6 +20,12 @@ class ModelDetailsViewController: UIViewController {
     var samplePct: Int = 0
     var metrics: [String:MetricInfo] = [:]
     
+    @IBOutlet weak var textModelName: UILabel!
+    @IBOutlet weak var textFeatureListName: UILabel!
+    @IBOutlet weak var textModelCategory: UILabel!
+    @IBOutlet weak var textSampleSize: UILabel!
+    @IBOutlet weak var textModelMetrics: UILabel!
+    
     typealias MetricInfo = (holdout: Double?, validation: Double?, crossValidation: Double?)
     
     override func viewDidLoad() {
@@ -31,6 +37,7 @@ class ModelDetailsViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
     }
     
     
@@ -52,6 +59,14 @@ class ModelDetailsViewController: UIViewController {
                 
                 self.metrics[name] = (holdout, validation, crossValidation)
             }
+            
+            DispatchQueue.main.async(execute: {
+                self.textModelName.text = "\(self.modelName)"
+                self.textFeatureListName.text = "\(self.featurelistName)"
+                self.textModelCategory.text = "\(self.modelCategory)"
+                self.textSampleSize.text = "\(Int(self.samplePct)) %"
+            })
+
         }
     }
 
