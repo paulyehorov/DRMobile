@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ModelDetailsViewController: UIViewController {
+class ModelDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var modelId: String!
     var projectId: String!
@@ -24,15 +24,44 @@ class ModelDetailsViewController: UIViewController {
     @IBOutlet weak var textFeatureListName: UILabel!
     @IBOutlet weak var textModelCategory: UILabel!
     @IBOutlet weak var textSampleSize: UILabel!
-    @IBOutlet weak var textModelMetrics: UILabel!
+    @IBOutlet weak var metricsTable: UITableView!
     
     typealias MetricInfo = (holdout: Double?, validation: Double?, crossValidation: Double?)
+    
+    func tableView(_ tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+        return self.metrics.count;
+    }
+    
+    func tableView(_ tableViewt: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "DRCell")
+        let key = Array(self.metrics.keys)[indexPath.row]
+        let info = self.metrics[key]
+        cell.backgroundColor = UIColor.init(white: 1, alpha: 0.25)
+        cell.textLabel?.textColor = UIColor.white
+        cell.detailTextLabel?.textColor = UIColor.white
+        cell.textLabel?.text = key
+        
+        let holdout: Any = info?.holdout ?? "N/A"
+        let crossValidation: Any = info?.crossValidation ?? "N/A"
+        let validation: Any = info?.validation ?? "N/A"
+        //let crossValid
+        cell.detailTextLabel?.text = "H: \(holdout), V: \(validation), CV: \(crossValidation)"
+        
+        return cell
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "AdditionalImages/background.jpg")!)
 
+        self.metricsTable.delegate = self
+        self.metricsTable.dataSource = self
+        self.metricsTable.backgroundColor = UIColor.init(white: 1, alpha: 0)
+        self.metricsTable.tableFooterView = UIView(frame: .zero)
+        
+        UITabBar.appearance().tintColor = UIColor(red: 253/255.0, green: 103/255.0, blue: 33/255.0, alpha: 1.0)
+        
         refresh()
     }
 
@@ -67,7 +96,7 @@ class ModelDetailsViewController: UIViewController {
                 self.textFeatureListName.text = "\(self.featurelistName)"
                 self.textModelCategory.text = "\(self.modelCategory)"
                 self.textSampleSize.text = "\(Int(self.samplePct)) %"
-                self.textModelMetrics.text = "\(self.metrics["holdout"]) : \(self.metrics["validation"]) : \(self.metrics["crossValidation"])"
+                self.metricsTable.reloadData()
             })
 
         }
