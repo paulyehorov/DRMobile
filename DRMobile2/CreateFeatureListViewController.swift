@@ -18,6 +18,7 @@ class CreateFeatureListViewController: UIViewController, UITableViewDelegate, UI
     typealias FeatureInfo = (featureType: String, uniqueCount: Int, naCount: Int)
     var features:[String:FeatureInfo] = [:]
     var checkedFeatures = Set<String>()
+    var featureListName: String = ""
     
     func tableView(_ tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         return self.features.count;
@@ -62,6 +63,16 @@ class CreateFeatureListViewController: UIViewController, UITableViewDelegate, UI
         featureTableView.backgroundColor = UIColor.init(white: 1, alpha: 0)
         featureTableView.tableFooterView = UIView(frame: .zero)
         
+        let alert = UIAlertController(title: "New Feature List", message: "Please enter the list's name", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addTextField { (textField) in
+            textField.text = "New Feature List"
+        }
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { _ in
+            let textField = alert.textFields![0]
+            self.featureListName = textField.text!
+        }))
+        self.present(alert, animated: true, completion: nil)
+        
         refresh()
     }
 
@@ -89,9 +100,7 @@ class CreateFeatureListViewController: UIViewController, UITableViewDelegate, UI
     }
     
     @IBAction func saveFeatureList(_ sender: Any) {
-        let date = Int(NSDate.timeIntervalSinceReferenceDate)
-        let listName = "Feature List \(date)"
-        try! drService.createFeatureList(projectId: projectId, name: listName, features: Array(checkedFeatures)) {
+        try! drService.createFeatureList(projectId: projectId, name: self.featureListName, features: Array(checkedFeatures)) {
         }
         self.performSegue(withIdentifier: "backToFeatureList", sender: self)
     }
