@@ -31,6 +31,11 @@ class DataViewController: UIViewController {
                 }
             } else {
                 print("LOGIN FAILED")
+                OperationQueue.main.addOperation {
+                    let alert = UIAlertController(title: "Authentication failed", message: "Please try again", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
         }
     }
