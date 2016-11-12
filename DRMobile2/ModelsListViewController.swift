@@ -44,8 +44,8 @@ class ModelsListViewController: UIViewController, UITableViewDelegate, UITableVi
         
         selectedModel = Array(self.modelsList.keys)[indexPath!.row]
         performSegue(withIdentifier: "moveToModelDetails", sender: self)
+        tableView.deselectRow(at: indexPath!, animated: true)
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "moveToModelDetails") {

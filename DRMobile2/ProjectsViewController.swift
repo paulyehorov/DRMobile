@@ -39,6 +39,7 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
         
         projectIdToPass = Array(self.projectsList.keys)[indexPath!.row]
         performSegue(withIdentifier: "moveToModelsList", sender: self)
+        tableView.deselectRow(at: indexPath!, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

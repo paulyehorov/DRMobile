@@ -50,6 +50,7 @@ class CreateFeatureListViewController: UIViewController, UITableViewDelegate, UI
             cell.accessoryType = UITableViewCellAccessoryType.checkmark
             checkedFeatures.insert(name!)
         }
+        tableView.deselectRow(at: indexPath!, animated: true)
     }
 
     override func viewDidLoad() {
